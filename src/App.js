@@ -16,12 +16,21 @@ function App() {
     }
     <div key={products.id}></div>
   }
+  const onRemove = (products) =>{
+    const exist = cartItem.find((x)=>(x.id===products.id))
+    if (exist){
+      setCartItem(cartItem.map(x => x.id ===products.id ? {...exist,qty:exist.qty-1} : x))
+    }else{
+      setCartItem([...cartItem,{...products,qty:0}])
+    }
+    <div key={products.id}></div>
+  }
   return (
     <div className="">
     <Header/>
       <div className="row">
         <Main onAdd = {onAdd} products ={products}/>
-        <Basket cartItem = {cartItem}/>
+        <Basket cartItem = {cartItem} onAdd = {onAdd} onRemove = {onRemove}/>
       </div>
     </div>
   );
