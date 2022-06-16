@@ -1,4 +1,5 @@
 import React from 'react';
+import Product from "./Product";
 
 export default function Main(props) {
     const {products} = props
@@ -6,19 +7,7 @@ export default function Main(props) {
         <main className="block col-2">
             <h2>Products</h2>
             <div className="row">
-                {products.map((p)=>(
-                    <div key= {p.id}>
-                        <div>
-                        <img className="small" src={p.image} alt={p.name} />
-                        </div>
-
-                        <div>
-                        <h3>{p.name}</h3>
-                        <p>${p.price}</p>
-                        </div>
-
-                    </div>
-                ))}
+                <Product product = {products}/>
             </div>
         </main>
     );
