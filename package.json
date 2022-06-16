@@ -1,6 +1,6 @@
 {
   "name": "simple-commerce-sample",
-  "version": "0.1.2git init\ngit init\n",
+  "version": "1.0\ngit init\ngit init\n",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
