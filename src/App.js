@@ -8,12 +8,13 @@ function App() {
   const {products} = data;
   const [cartItem,setCartItem] = useState([])
   const onAdd = (products) =>{
-    // const exist = cartItem.find((x)=>(x.id===products.id))
-    // if (exist){
-    //   console.log()
-    // }
-    // <div key={products.id}></div>
-    console.log({products})
+    const exist = cartItem.find((x)=>(x.id===products.id))
+    if (exist){
+      setCartItem(cartItem.map(x => x.id ===products.id ? {...exist,qty:exist.qty+1} : x))
+    }else{
+      setCartItem([...cartItem,{...products,qty:1}])
+    }
+    <div key={products.id}></div>
   }
   return (
     <div className="">
