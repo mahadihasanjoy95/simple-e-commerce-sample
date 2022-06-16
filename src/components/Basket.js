@@ -5,7 +5,7 @@ export default function Basket(props) {
     return (
         <aside className="block col-1">
             <h2>Cart Items</h2>
-            {cartItem.length===0 &&(<div>Cart is Empty</div>)}
+            {cartItem.length===0 &&(<div>Cart is Not Empty</div>)}
         </aside>
     );
 }
