@@ -75,26 +75,3 @@ body{
   box-sizing:border-box;
   color:black;
 }
-
-
-.header-form{
-  margin-bottom:15px;
-}
-.message{
-  display:flex;
-  justify-content:space-between
-}
-.social{
-  display:flex;
-  justify-content:space-around;
-  padding:30px;
-}
-
-.social i{
-  font-size:35px;
-}
-
-.social i:hover{
-  color:red;
-  cursor:pointer;
-}

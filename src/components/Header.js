@@ -3,26 +3,22 @@ import React, {useState} from 'react';
 export default function Header(props) {
 
     const [stateName, setStateNAme] = useState("Index")
+    const {signInButtom} = props
 
-    const checkState=(val) =>{
-        console.log({val})
-
-        if (val==="Index"){
+    const checkState = (val) => {
+        if (val === "Index") {
             return "Home Page"
-        }
-        else if(val==="SignIn") {
+        } else if (val === "SignIn") {
             return "Sign In"
-        }
-        else if(val==="Register") {
+        } else if (val === "Register") {
             return "Sign Up"
-        }
-        else
+        } else
             return "Others"
     }
     return (
         <header className="block row center">
             <div>
-                <a href={"#/"} onClick={(onclick)=>setStateNAme("Index")}>
+                <a href={"#/"} onClick={()=>{setStateNAme("Index");signInButtom("Index")}}>
                     <div className="row">
                         <img className="small" src="/favicon.ico" alt="icon"/>
                         <h1>Meena Bazar</h1>
@@ -33,9 +29,9 @@ export default function Header(props) {
                 <h1>{checkState(stateName)}</h1>
             </div>
             <div>
-                <a onClick={(onclick)=>setStateNAme("SignIn")} href="#/signIn">SignIn</a>
+                <a onClick={()=>{setStateNAme("SignIn");signInButtom("SignIn")}} href="#/signIn">SignIn</a>
                 <> </>
-                <a href="#/Register" onClick={(onclick)=>setStateNAme("Register")} >Register</a>
+                <a href="#/Register" onClick={()=>signInButtom("Register")}>Register</a>
             </div>
         </header>
     );

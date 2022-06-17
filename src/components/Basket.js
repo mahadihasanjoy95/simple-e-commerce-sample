@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 export default function Basket(props) {
     const {cartItem,onAdd, onRemove} = props
@@ -45,7 +45,7 @@ export default function Basket(props) {
                                     {findName(i++)}
                                 </div>
                                 <div key={x.id} className="col-1 text-left">
-                                    {i===4?<strong>{x.toFixed(2)}</strong>:<div>{x.toFixed(2)}</div>}
+                                    {i===4?<strong>${x.toFixed(2)}</strong>:<div>${x.toFixed(2)}</div>}
                                 </div>
                             </div>
 

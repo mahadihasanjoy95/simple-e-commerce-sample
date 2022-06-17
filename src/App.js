@@ -4,10 +4,11 @@ import Main from "./components/Main"
 import Basket from "./components/Basket";
 import data from "./data";
 import {useState} from "react"
+import SignInForm from "./components/SignInForm";
 function App() {
   const {products} = data;
   const [cartItem,setCartItem] = useState([])
-
+  const [containerForm,setContainerForm] = useState("Index")
   const onAdd = (products) =>{
     const exist = cartItem.find((x)=>(x.id===products.id))
     if (exist){
@@ -24,13 +25,19 @@ function App() {
       setCartItem(cartItem.map(x => x.id ===products.id ? {...exist,qty:exist.qty-1} : x))
     }
   }
+   const signInButtom = (val) => {
+    setContainerForm(val)
+     {console.log("###########Test First : #########"+containerForm,val)}
+  }
 
   return (
     <div className="">
-    <Header state = "Index"/>
+    <Header signInButtom = {signInButtom} state = "Index"/>
       <div className="row">
-        <Main onAdd = {onAdd} products ={products}/>
-        <Basket cartItem = {cartItem} onAdd = {onAdd} onRemove = {onRemove}/>
+        {containerForm==="Index" &&(<div className="row col-2"><Main onAdd = {onAdd} products ={products}/> <Basket cartItem = {cartItem} onAdd = {onAdd} onRemove = {onRemove}/></div>)}
+        {containerForm==="SignIn" &&(<div className="row col-1"><SignInForm/></div>)}
+        {/*<Main onAdd = {onAdd} products ={products}/>*/}
+        {/*<div className="block"><SignInForm class/></div>*/}
       </div>
     </div>
   );
