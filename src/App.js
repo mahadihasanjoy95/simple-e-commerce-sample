@@ -27,7 +27,7 @@ function App() {
 
   return (
     <div className="">
-    <Header/>
+    <Header state = "Index"/>
       <div className="row">
         <Main onAdd = {onAdd} products ={products}/>
         <Basket cartItem = {cartItem} onAdd = {onAdd} onRemove = {onRemove}/>

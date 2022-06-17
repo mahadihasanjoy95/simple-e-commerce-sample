@@ -9,7 +9,6 @@ export default function Basket(props) {
     const list = [itemPrice,taxPrice, deliveryFee,totalPrice]
     let i =0
     const findName=(val) =>{
-        {console.log({val})}
         if (val===0)
             return "Items Price"
         else if(val===1)
