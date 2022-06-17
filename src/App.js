@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Main from "./components/Main"
 import Basket from "./components/Basket";
 import data from "./data";
-import {useState} from "react";
+import {useState} from "react"
 function App() {
   const {products} = data;
   const [cartItem,setCartItem] = useState([])
