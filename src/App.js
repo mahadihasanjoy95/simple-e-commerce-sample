@@ -35,9 +35,7 @@ function App() {
     <Header signInButtom = {signInButtom} state = "Index"/>
       <div className="row">
         {containerForm==="Index" &&(<div className="row col-2"><Main onAdd = {onAdd} products ={products}/> <Basket cartItem = {cartItem} onAdd = {onAdd} onRemove = {onRemove}/></div>)}
-        {containerForm==="SignIn" &&(<div className="row col-1"><SignInForm/></div>)}
-        {/*<Main onAdd = {onAdd} products ={products}/>*/}
-        {/*<div className="block"><SignInForm class/></div>*/}
+        {containerForm==="SignIn" &&(<div className="center"><SignInForm/></div>)}
       </div>
     </div>
   );

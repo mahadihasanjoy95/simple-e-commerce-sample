@@ -22,8 +22,10 @@ a {
   display: flex;
   justify-content: space-between;
 }
-.row.center {
-  align-items: center;
+
+
+.center{
+  position: center;
 }
 .col-1 {
   flex: 1;
@@ -74,4 +76,16 @@ body{
   padding:0;
   box-sizing:border-box;
   color:black;
+}
+.form {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+.form > div {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+.form label {
+  margin: 1rem 0;
 }
