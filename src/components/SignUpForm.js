@@ -1,17 +1,19 @@
 import React, {useState} from "react";
 
 
-export default function SignInForm() {
+export default function SignUpForm() {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
 
-    async function login() {
-        console.log(email, password)
-        let item = {email, password}
+    async function signUp() {
+        console.log(email, password, firstName, lastName)
+        let item = {email, password, firstName, lastName}
         // let result = await fetch("https://spring-boot--signin-jwt.herokuapp.com/user/signIn", {
         try{
-            let result = await fetch("http://localhost:8080/user/signIn", {
+            let result = await fetch("http://localhost:8080/user/signUp", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -21,10 +23,8 @@ export default function SignInForm() {
                 },
                 body: JSON.stringify(item)
             })
-            console.log("Result######" + result)
             result = await result.json()
             console.log("Result######" + result)
-            localStorage.setItem("token", JSON.stringify(result))
             alert(JSON.stringify(result))
         }catch (err){
             alert(err)
@@ -35,13 +35,19 @@ export default function SignInForm() {
         <div className="col-sm-6 offset-sm-3">
             <form className="form block">
                 <div className="">
+                    <input onChange={(e) => (setFirstName(e.target.value))} className="form-control" type="text"
+                           placeholder="First Name"/>
+                    <br/>
+                    <input onChange={(e) => (setLastName(e.target.value))} className="form-control" type="text"
+                           placeholder="Last Name"/>
+                    <br/>
                     <input onChange={(e) => (setEmail(e.target.value))} className="form-control" type="text"
                            placeholder="Email"/>
                     <br/>
                     <input onChange={(e) => (setPassword(e.target.value))} className="form-control"
                            placeholder="Password" type="password"/>
                 </div>
-                <button href="#/signIn" type="submit" onClick={() => login()}>Log in</button>
+                <button href="#/signUp" type="submit" onClick={() => signUp()}>Sign Up</button>
             </form>
         </div>
     )

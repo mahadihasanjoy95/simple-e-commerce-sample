@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 export default function Header(props) {
 
     const [stateName, setStateNAme] = useState("Index")
-    const {signInButtom} = props
+    const {signInButtom,signUpButton} = props
 
     const checkState = (val) => {
         if (val === "Index") {
@@ -31,7 +31,7 @@ export default function Header(props) {
             <div>
                 <a onClick={()=>{setStateNAme("SignIn");signInButtom("SignIn")}} href="#/signIn">SignIn</a>
                 <> </>
-                <a href="#/Register" onClick={()=>signInButtom("Register")}>Register</a>
+                <a href="#/Register" onClick={()=>{setStateNAme("Register");signUpButton("SignUp")}}>Register</a>
             </div>
         </header>
     );
