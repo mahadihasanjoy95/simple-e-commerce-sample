@@ -13,7 +13,7 @@ export default function SignUpForm() {
         let item = {email, password, firstName, lastName}
         // let result = await fetch("https://spring-boot--signin-jwt.herokuapp.com/user/signIn", {
         try{
-            let result = await fetch("http://localhost:8080/user/signUp", {
+            let result = await fetch("https://spring-boot--signin-jwt.herokuapp.com/user/signUp", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
