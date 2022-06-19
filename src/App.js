@@ -33,8 +33,8 @@ function App() {
   return (
     <div className="">
     <Header signInButtom = {signInButtom} state = "Index"/>
-      <div className="row">
-        {containerForm==="Index" &&(<div className="row col-2"><Main onAdd = {onAdd} products ={products}/> <Basket cartItem = {cartItem} onAdd = {onAdd} onRemove = {onRemove}/></div>)}
+      <div>
+        {containerForm==="Index" &&(<div><div className="row col-2"><Main onAdd = {onAdd} products ={products}/> <Basket cartItem = {cartItem} onAdd = {onAdd} onRemove = {onRemove}/></div></div>)}
         {containerForm==="SignIn" &&(<div className="center"><SignInForm/></div>)}
       </div>
     </div>
