@@ -6,7 +6,6 @@ import data from "./data";
 import {useState} from "react"
 import SignInForm from "./components/SignInForm";
 
-import Product from "./components/Product";
 
 import SignUpForm from "./components/SignUpForm";
 function App() {
