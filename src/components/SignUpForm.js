@@ -24,7 +24,6 @@ export default function SignUpForm() {
                 body: JSON.stringify(item)
             })
             result = await result.json()
-            console.log("Result######" + result)
             alert(JSON.stringify(result))
         }catch (err){
             alert(err)
