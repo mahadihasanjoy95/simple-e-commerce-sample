@@ -21,11 +21,13 @@ export default function SignInForm() {
                 },
                 body: JSON.stringify(item)
             })
-            console.log("Result######" + result)
+
             result = await result.json()
-            console.log("Result######" + result)
-            localStorage.setItem("token", JSON.stringify(result))
-            alert(JSON.stringify(result))
+            // console.log("Result######" + result)
+            result = JSON.stringify(result)
+            var obj = JSON.parse(result);
+            localStorage.setItem("token", obj.jwt)
+            alert(obj.jwt)
         }catch (err){
             alert(err)
         }

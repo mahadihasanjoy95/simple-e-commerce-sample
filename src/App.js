@@ -7,8 +7,12 @@ import {useState} from "react"
 import SignInForm from "./components/SignInForm";
 
 import Product from "./components/Product";
+
 import SignUpForm from "./components/SignUpForm";
 function App() {
+
+  fetchData()
+
   const {products} = data;
   const [cartItem,setCartItem] = useState([])
   const [containerForm,setContainerForm] = useState("Index")
@@ -48,4 +52,24 @@ function App() {
   );
 }
 
+async function fetchData() {
+  try {
+    let auth =  localStorage.getItem('token');
+    let result = await fetch("https://spring-boot--signin-jwt.herokuapp.com/procuct/getAll", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Content-Length": "<calculated when request is sent>",
+        "Host": "<calculated when request is sent>",
+        'Authorization': "Bearer " + auth,
+      },
+    })
+    result = await result.json()
+    result = JSON.stringify(result)
+    console.log(result)
+  } catch (err) {
+    alert(err)
+  }
+}
 export default App;
