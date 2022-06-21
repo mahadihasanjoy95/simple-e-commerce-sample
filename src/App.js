@@ -51,7 +51,7 @@ function App() {
     useEffect(() => {
         let auth = localStorage.getItem('token');
         setAppState({loading: true});
-        const apiUrl = `https://spring-boot--signin-jwt.herokuapp.com/procuct/getAll`;
+        const apiUrl = `http://localhost:8080/procuct/getAll`;
         fetch(apiUrl, {
             method: "GET",
             headers: {

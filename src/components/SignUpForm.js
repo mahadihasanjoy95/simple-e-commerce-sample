@@ -14,7 +14,7 @@ export default function SignUpForm(props) {
         console.log(email, password, firstName, lastName)
         let item = {email, password, firstName, lastName}
         try {
-            let result = await fetch("https://spring-boot--signin-jwt.herokuapp.com/user/signUp", {
+            let result = await fetch("http://localhost:8080/user/signUp", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
