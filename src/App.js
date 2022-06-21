@@ -54,15 +54,15 @@ function App() {
 async function fetchData() {
   try {
     let auth =  localStorage.getItem('token');
-    let result = await fetch("https://spring-boot--signin-jwt.herokuapp.com/procuct/getAll", {
-      method: "GET",
+    let result = await fetch("http://127.0.0.1:8080/user/getAll", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
         "Content-Length": "<calculated when request is sent>",
         "Host": "<calculated when request is sent>",
         'Authorization': "Bearer " + auth,
-      },
+      }
     })
     result = await result.json()
     result = JSON.stringify(result)
