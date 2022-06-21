@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 
 export default function Header(props) {
 
-    const [stateName, setStateNAme] = useState("Index")
-    const {signInButtom,signUpButton} = props
+    const {changeForm,logout,logoutButton, stateNameFromApp} = props
+    const [stateName, setStateNAme] = useState(stateNameFromApp)
 
     const checkState = (val) => {
         if (val === "Index") {
@@ -18,20 +18,22 @@ export default function Header(props) {
     return (
         <header className="block row center">
             <div>
-                <a href={"#/"} onClick={()=>{setStateNAme("Index");signInButtom("Index")}}>
+                <a href={"#/"} onClick={()=>{setStateNAme("Index");changeForm("Index")}}>
                     <div className="row">
                         <img className="small" src="/favicon.ico" alt="icon"/>
                         <h1>Meena Bazar</h1>
                     </div>
                 </a>
             </div>
-            <div className="center">
-                <h1>{checkState(stateName)}</h1>
-            </div>
+            {/*<div className="center">*/}
+            {/*    <h1>{checkState(stateName)}</h1>*/}
+            {/*</div>*/}
             <div>
-                <a onClick={()=>{setStateNAme("SignIn");signInButtom("SignIn")}} href="#/signIn">SignIn</a>
+                <button onClick={()=>{setStateNAme("SignIn");changeForm("SignIn")}} href="#/signIn">SignIn</button>
                 <> </>
-                <a href="#/Register" onClick={()=>{setStateNAme("Register");signUpButton("SignUp")}}>Register</a>
+                <button href="#/Register" onClick={()=>{setStateNAme("Register");changeForm("SignUp")}}>Register</button>
+                <></>
+                {logout===true  && localStorage.getItem('token')!=null && localStorage.getItem('token')!=""  && (<button onClick={()=>{logoutButton(false)}}>LogOut</button>)}
             </div>
         </header>
     );

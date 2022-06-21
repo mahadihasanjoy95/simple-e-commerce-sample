@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 
 
-export default function SignUpForm() {
+export default function SignUpForm(props) {
+
+    const {changeForm} = props
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -11,8 +13,7 @@ export default function SignUpForm() {
     async function signUp() {
         console.log(email, password, firstName, lastName)
         let item = {email, password, firstName, lastName}
-        // let result = await fetch("https://spring-boot--signin-jwt.herokuapp.com/user/signIn", {
-        try{
+        try {
             let result = await fetch("https://spring-boot--signin-jwt.herokuapp.com/user/signUp", {
                 method: "POST",
                 headers: {
@@ -25,7 +26,8 @@ export default function SignUpForm() {
             })
             result = await result.json()
             alert(JSON.stringify(result))
-        }catch (err){
+            {changeForm("SignIn")}
+        } catch (err) {
             alert(err)
         }
     }
