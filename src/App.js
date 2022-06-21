@@ -3,16 +3,18 @@ import Header from "./components/Header";
 import Main from "./components/Main"
 import Basket from "./components/Basket";
 import data from "./data";
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import SignInForm from "./components/SignInForm";
 
 
 import SignUpForm from "./components/SignUpForm";
 function App() {
 
-  fetchData()
-
-  const {products} = data;
+  const [appState, setAppState] = useState({
+    loading: false,
+    repos: null,
+  });
+  const [products,setProducts] = useState([])
   const [cartItem,setCartItem] = useState([])
   const [containerForm,setContainerForm] = useState("Index")
   const onAdd = (products) =>{
@@ -23,6 +25,7 @@ function App() {
       setCartItem([...cartItem,{...products,qty:1}])
     }
   }
+
 
   const onRemove = (products) =>{
     const exist = cartItem.find((x)=>(x.id===products.id))
@@ -39,6 +42,30 @@ function App() {
     console.log(val)
   }
 
+
+
+  useEffect(() => {
+    let auth =  localStorage.getItem('token');
+    setAppState({ loading: true });
+    const apiUrl = `https://spring-boot--signin-jwt.herokuapp.com/procuct/getAll`;
+    fetch(apiUrl,{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Content-Length": "<calculated when request is sent>",
+        "Host": "<calculated when request is sent>",
+        'Authorization': "Bearer " + auth
+      }
+    })
+        .then((res) => res.json())
+        .then((repos) => {
+          console.log("Response From BackEnd:::"+repos.result)
+          setProducts(repos.result);
+        });
+  }, [setAppState]);
+
+
   return (
     <div className="">
     <Header signInButtom = {signInButtom} signUpButton = {signUpButton} state = "Index"/>
@@ -54,19 +81,20 @@ function App() {
 async function fetchData() {
   try {
     let auth =  localStorage.getItem('token');
-    let result = await fetch("http://127.0.0.1:8080/user/getAll", {
-      method: "POST",
+    let result = await fetch("https://spring-boot--signin-jwt.herokuapp.com/procuct/getAll", {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
         "Content-Length": "<calculated when request is sent>",
         "Host": "<calculated when request is sent>",
-        'Authorization': "Bearer " + auth,
+        'Authorization': "Bearer " + auth
       }
     })
     result = await result.json()
     result = JSON.stringify(result)
-    console.log(result)
+    var obj = JSON.parse(result);
+    console.log("Online Data"+obj.result)
   } catch (err) {
     alert(err)
   }

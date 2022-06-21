@@ -1,10 +1,12 @@
 import React, {useState} from "react";
+import Main from "./Main";
 
 
 export default function SignInForm() {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [v,setV] = useState("")
 
     async function login() {
         console.log(email, password)
@@ -31,6 +33,29 @@ export default function SignInForm() {
         }catch (err){
             alert(err)
         }
+
+
+        // try {
+        //     let auth =  localStorage.getItem('token');
+        //     let result = await fetch("http://localhost:8080/procuct/getAll", {
+        //         method: "GET",
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //             "Accept": "application/json",
+        //             "Content-Length": "<calculated when request is sent>",
+        //             "Host": "<calculated when request is sent>",
+        //             'Authorization': "Bearer " + auth
+        //         }
+        //     })
+        //     result = await result.json()
+        //     result = JSON.stringify(result)
+        //     var obj = JSON.parse(result);
+        //
+        //     console.log("Online Data"+obj.result)
+        // } catch (err) {
+        //     alert(err)
+        // }
+
     }
 
     return (
