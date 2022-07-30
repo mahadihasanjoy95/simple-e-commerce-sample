@@ -2,35 +2,9 @@ import React from 'react';
 import {Form, Formik, useField} from "formik";
 import * as Yup from 'yup';
 function SignUpForm(props) {
-    const MyTextInput = ({ label, ...props }) => {
-        const [field, meta] = useField(props);
-        return (
-            <>
-                <label htmlFor={props.id || props.name}>{label}</label>
-                <input className="text-input" {...field} {...props} />
-                {meta.touched && meta.error ? (
-                    <div className="error">{meta.error}</div>
-                ) : null}
-            </>
-        );
-    };
-    const MyCheckbox = ({ children, ...props }) => {
-        const [field, meta] = useField({ ...props, type: 'checkbox' });
-        return (
-            <div>
-                <label className="checkbox-input">
-                    <input type="checkbox" {...field} {...props} />
-                    {children}
-                </label>
-                {meta.touched && meta.error ? (
-                    <div className="error">{meta.error}</div>
-                ) : null}
-            </div>
-        );
-    };
+
     return (
         <>
-            <h1>Subscribe!</h1>
             <Formik
                 initialValues={{
                     firstName: '',
@@ -67,31 +41,7 @@ function SignUpForm(props) {
                 }}
             >
                 <Form>
-                    <MyTextInput
-                        name="firstName"
-                        type="text"
-                        placeholder="First Name"
-                    />
-                    <br/>
-                    <br/>
-                    <MyTextInput
-                        name="lastName"
-                        type="text"
-                        placeholder="Second Name"
-                    />
-                    <br/>
-                    <br/>
-                    <MyTextInput
-                        name="email"
-                        type="email"
-                        placeholder="email@g.c"
-                    />
-                    <br/>
-                    <br/>
-                    <MyCheckbox name="acceptedTerms">
-                        I accept the terms and conditions
-                    </MyCheckbox>
-                    <button type="submit">Submit</button>
+                    {props.children}
                 </Form>
             </Formik>
         </>

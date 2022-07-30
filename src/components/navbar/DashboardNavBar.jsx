@@ -20,7 +20,6 @@ function DashboardNavBar(props) {
                     <Nav className="ml-auto">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/auth/logIn">Login</Nav.Link>
-                        <Nav.Link href="/auth/signUp">SignUp</Nav.Link>
                     </Nav>
                 <Badge badgeContent={1} color="primary"  id="basic-button"
                        aria-controls={open ? 'basic-menu' : undefined}
@@ -37,7 +36,12 @@ function DashboardNavBar(props) {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                <MenuItem onClick={handleClose}>Your Cart Is Empty!!</MenuItem>
+                {/*<MenuItem onClick={handleClose}>Your Cart Is Empty!!</MenuItem>*/}
+                <div className={"card_details d-flex justify-content-center align-items-center"} style={{padding:10,position:"relative"}}>
+                    <i className={"fas fa-close smallclose"} style={{position:"absolute", top:2,right:20,fontSize:23, cursor:"pointer"}} onClick={handleClose}></i>
+                    <p style={{fontSize:20}}>Your Cart Is Empty!!</p>
+                    <img src="/cart.gif" alt={""} className={"emptycart_img"} style={{width:"4rem",padding:10}}/>
+                </div>
             </Menu>
 
                 </Navbar>

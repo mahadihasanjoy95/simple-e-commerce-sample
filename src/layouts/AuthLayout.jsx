@@ -1,10 +1,11 @@
 import React from 'react';
-import NavBar from "../components/NavBar";
+import AuthNavBar from "../components/navbar/AuthNavBar";
 import {Outlet} from "react-router-dom";
 function AuthLayout(props) {
     return (
         <div>
-            <NavBar/>
+            <AuthNavBar/>
+            <h1 className={"text-center"}>Auth Layout</h1>
             <Outlet/>
         </div>
     );

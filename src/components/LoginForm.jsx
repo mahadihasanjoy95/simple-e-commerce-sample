@@ -18,7 +18,6 @@ function LoginForm(props) {
 
     return (
         <>
-            <h1>LogIn</h1>
             <Formik
                 initialValues={{
                     firstName: '',
@@ -55,19 +54,7 @@ function LoginForm(props) {
                 }}
             >
                 <Form>
-                    <MyTextInput
-                        name="email"
-                        type="email"
-                        placeholder="email@g.c"
-                    />
-                    <br/>
-                    <MyTextInput
-                        name="password"
-                        type="password"
-                        placeholder="*****"
-                    />
-                    <br/>
-                    <button type="submit">Login</button>
+                    {props.children}
                 </Form>
             </Formik>
         </>
