@@ -19,7 +19,9 @@ function DashboardNavBar(props) {
         <Navbar bg="dark" variant="dark" style={{ height: "60px",padding:"5px 20px"}}>
                     <Nav className="me-auto">
                         <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/itemDetails">Item Details</Nav.Link>
                         <Nav.Link href="/auth/logIn">Login</Nav.Link>
+
                     </Nav>
                 <Badge badgeContent={1} color="primary"  id="basic-button"
                        aria-controls={open ? 'basic-menu' : undefined}

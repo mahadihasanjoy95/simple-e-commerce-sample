@@ -13,17 +13,18 @@ function ItemDetails(props) {
                         <div className={"details"}>
                             <Table>
                                <tr>
-                                   <td>  <p><strong>Restaurant :</strong>La Milano Pizzeria</p>
-                                       <p><strong>Price :</strong>৳70</p>
-                                       <p><strong>Dishes :</strong>Pizza, Fast Food, Pasta</p>
-                                       <p><strong>Total :</strong>৳70</p>
+                                   <td>  <p><strong>Restaurant :</strong> La Milano Pizzeria</p>
+                                       <p><strong>Price :</strong> ৳70</p>
+                                       <p><strong>Dishes :</strong> Pizza, Fast Food, Pasta</p>
+                                       <p><strong>Total :</strong> ৳70</p>
                                    </td>
+                                   <td>
+                                   <p><strong>Rating :</strong><span style={{background:"green",color:"#fff",padding:"2px 5px",borderRadius:"5px"}}> 4.2 ★</span></p>
 
-                                   <p><strong>Rating :</strong>4.2 ★</p>
+                                   <p><strong>Order Review :</strong><span>650 + order placed from here recently</span></p>
 
-                                   <p><strong>Order Review :</strong>650 + order placed from here recently</p>
-
-                                   <p><strong>Remove :</strong>❌</p>
+                                   <p><strong>Remove :</strong><span> <i className='fas fa-trash' style={{color:"red",fontSize:20,cursor:"pointer"}}></i></span></p>
+                                   </td>
                                </tr>
                             </Table>
 
