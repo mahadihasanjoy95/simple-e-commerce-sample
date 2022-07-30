@@ -9,6 +9,7 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import Dashboard from "./components/Dashboard";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useField} from "formik";
+import ItemDetails from "./components/ItemDetails";
 
 
 function App() {
@@ -87,9 +88,9 @@ function App() {
                 </Route>
                 <Route path={"/"} element={<DashboardLayout/>}>
                     <Route index element={<Dashboard/>}></Route>
+                    <Route path={"/itemDetails"} element={<ItemDetails/>}></Route>
                 </Route>
                 <Route path={"*"} element={<Error/>}></Route>
-
             </Routes>
         </div>
     );

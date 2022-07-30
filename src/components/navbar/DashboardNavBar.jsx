@@ -16,8 +16,8 @@ function DashboardNavBar(props) {
         setAnchorEl(null);
     };
     return (
-        <Navbar bg="dark" variant="dark" style={{ height: "60px" }}>
-                    <Nav className="ml-auto">
+        <Navbar bg="dark" variant="dark" style={{ height: "60px",padding:"5px 20px"}}>
+                    <Nav className="me-auto">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/auth/logIn">Login</Nav.Link>
                     </Nav>
