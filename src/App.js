@@ -12,6 +12,8 @@ import {useField} from "formik";
 import ItemDetails from "./components/ItemDetails";
 
 
+
+
 function App() {
     const MyTextInput = ({ label, ...props }) => {
         const [field, meta] = useField(props);
@@ -88,7 +90,7 @@ function App() {
                 </Route>
                 <Route path={"/"} element={<DashboardLayout/>}>
                     <Route index element={<Dashboard/>}></Route>
-                    <Route path={"/itemDetails"} element={<ItemDetails/>}></Route>
+                    <Route path={"/itemDetails/:id"} element={<ItemDetails/>}></Route>
                 </Route>
                 <Route path={"*"} element={<Error/>}></Route>
             </Routes>
