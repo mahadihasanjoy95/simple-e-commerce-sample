@@ -5,10 +5,11 @@ import {Badge} from "@mui/material";
 import Menu from '@mui/material/Menu';
 import {useDispatch, useSelector} from "react-redux";
 import Table from "react-bootstrap/Table";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {REMOVE} from "../../redux/actions/Actions";
 
 function DashboardNavBar(props) {
+    const navigate = useNavigate()
     const [totalPrice, setTotalPrice] = useState(0)
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -23,6 +24,7 @@ function DashboardNavBar(props) {
     const dispatch = useDispatch();
     const remove = (e) => {
         dispatch(REMOVE(e));
+        navigate("/")
     }
     const calculateTotalPrice =()=>{
         let price = 0;
@@ -91,6 +93,9 @@ function DashboardNavBar(props) {
                                                     <i className={"fas fa-trash largetrash"}
                                                        onClick={() => remove(e.id)}></i>
                                                 </td>
+                                                {/*<div className='mt-5 d-flex justify-content-between align-items-center' style={{width:100,cursor:"pointer",background:"#ddd",color:"#111"}}>*/}
+                                                {/*    <span style={{fontSize:24}}>-</span>*/}
+                                                {/*</div>*/}
                                             </tr>
                                         </>
                                     )
