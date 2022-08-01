@@ -1,32 +1,37 @@
 import React, {useEffect, useState} from 'react';
 import Table from 'react-bootstrap/Table'
-import {useParams} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useNavigate, useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {REMOVE} from "../redux/actions/Actions";
 
 function ItemDetails(props) {
     const [data, setData] = useState([])
     console.log(data)
     const {id} = useParams()
-    const getdata = useSelector((state)=> state.cartreducer.carts);
-    const compare = ()=>{
-        let comparedata = getdata.filter((e)=>{
+    const getdata = useSelector((state) => state.cartreducer.carts);
+    const navigate = useNavigate()
+    const compare = () => {
+        let comparedata = getdata.filter((e) => {
             return e.id == id
         });
         setData(comparedata);
     }
-    useEffect(()=>{
+    useEffect(() => {
         compare();
-    },[id])
+    }, [id])
+    const dispatch = useDispatch();
+    const remove = (e) => {
+        dispatch(REMOVE(e));
+        navigate("/")
+    }
 
-    return (
-        <>
+    return (<>
             <div className={"container mt-2"}>
                 <h2>Item Details</h2>
                 <section className={"container mt-3"}>
                     <div className="iteamsdetails">
                         {data.map((e) => {
-                            return (
-                                <>
+                            return (<>
                                     <div className={"items_img"}>
                                         <img src={e.imgdata}/>
                                     </div>
@@ -53,21 +58,21 @@ function ItemDetails(props) {
                                                                                               color: "red",
                                                                                               fontSize: 20,
                                                                                               cursor: "pointer"
-                                                                                          }}></i></span></p>
+                                                                                          }}
+                                                                                          onClick={() => remove(e.id)}></i></span>
+                                                    </p>
                                                 </td>
                                             </tr>
                                         </Table>
 
                                     </div>
-                                </>
-                            )
+                                </>)
                         })}
 
                     </div>
                 </section>
             </div>
-        </>
-    );
+        </>);
 }
 
 export default ItemDetails;
