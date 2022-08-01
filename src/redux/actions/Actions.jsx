@@ -10,3 +10,9 @@ export const REMOVE = (i)=>{
         payload: i
     }
 }
+export const REMOVE_ONE = (item)=>{
+    return{
+        type:"REMOVE_ONE_CART",
+        payload: item
+    }
+}

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Table from 'react-bootstrap/Table'
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {REMOVE} from "../redux/actions/Actions";
+import {ADD, REMOVE, REMOVE_ONE} from "../redux/actions/Actions";
 
 function ItemDetails(props) {
     const [data, setData] = useState([])
@@ -24,6 +24,14 @@ function ItemDetails(props) {
         dispatch(REMOVE(e));
         navigate("/")
     }
+    const send = (e) => {
+        dispatch(ADD(e));
+    }
+
+    const removeOne = (e) => {
+        console.log(e)
+        dispatch(REMOVE_ONE(e));
+    }
 
     return (<>
             <div className={"container mt-2"}>
@@ -38,10 +46,16 @@ function ItemDetails(props) {
                                     <div className={"details"}>
                                         <Table>
                                             <tr>
-                                                <td><p><strong>Restaurant :</strong>{e.rname}</p>
-                                                    <p><strong>Price :</strong> ৳{e.price}</p>
-                                                    <p><strong>Dishes :</strong> {e.address}</p>
-                                                    <p><strong>Total :</strong> ৳{e.price}</p>
+                                                <td><><strong>Restaurant :</strong>{e.rname}</>
+                                                    <><strong>Price :</strong> ৳{e.price}</>
+                                                    <><strong>Dishes :</strong> {e.address}</>
+                                                    <><strong>Total :</strong> ৳{e.price*e.qnty}</>
+                                                    <div className='mt-5 d-flex justify-content-between align-items-center' style={{width:100,cursor:"pointer",background:"#ddd",color:"#111"}}>
+                                                        <span style={{fontSize:24}} onClick={e.qnty <=1 ? ()=>remove(e.id) : ()=>removeOne(e)}>-</span>
+                                                        <span style={{fontSize:22}}>{e.qnty}</span>
+                                                        <span style={{fontSize:24}} onClick={()=>send(e)}>+</span>
+
+                                                    </div>
                                                 </td>
                                                 <td>
                                                     <p><strong>Rating :</strong><span style={{

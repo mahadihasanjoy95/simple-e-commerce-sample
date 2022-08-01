@@ -27,7 +27,7 @@ function DashboardNavBar(props) {
     const calculateTotalPrice =()=>{
         let price = 0;
         getData.map((e,k)=>{
-            price = price + e.price
+            price = price + (e.price*e.qnty)
             console.log(price)
         })
         console.log(totalPrice)
