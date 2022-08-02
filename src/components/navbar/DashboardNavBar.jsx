@@ -43,8 +43,8 @@ function DashboardNavBar(props) {
     return (
         <Navbar bg="dark" variant="dark" style={{height: "60px", padding: "5px 20px"}}>
             <Nav className="me-auto">
-                <NavLink to="/" className="text-decoration-none text-light mx-3">Home</NavLink>
-                <NavLink to="/auth/logIn" className="text-decoration-none text-light mx-3">Login</NavLink>
+                <NavLink to="/dashboard" className="text-decoration-none text-light mx-3">Home</NavLink>
+                <NavLink to="/" className="text-decoration-none text-light mx-3">Login</NavLink>
             </Nav>
             <Badge badgeContent={getData.length} color="primary" id="basic-button"
                    aria-controls={open ? 'basic-menu' : undefined}
@@ -77,7 +77,7 @@ function DashboardNavBar(props) {
                                     return (
                                         <>
                                             <tr>
-                                                <td><NavLink to={`/itemDetails/${e.id}`}><img src={e.image} style={{
+                                                <td><NavLink to={`/dashboard/itemDetails/${e.id}`}><img src={e.image} style={{
                                                     width: "5rem",
                                                     height: "5rem"
                                                 }} onClick={handleClose}/></NavLink></td>

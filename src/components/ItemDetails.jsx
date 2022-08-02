@@ -21,7 +21,7 @@ function ItemDetails(props) {
     const dispatch = useDispatch();
     const remove = (e) => {
         dispatch(REMOVE(e));
-        navigate("/")
+        navigate("/dashboard")
     }
     const send = (e) => {
         dispatch(ADD(e));

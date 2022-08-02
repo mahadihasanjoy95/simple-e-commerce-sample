@@ -43,8 +43,8 @@ function App() {
     };
     return (<div className={"App"}>
             <Routes>
-                <Route path={"/auth"} element={<AuthLayout/>}>
-                    <Route path={"logIn"} element={<LoginForm> <MyTextInput
+                <Route path={"/"} element={<AuthLayout/>}>
+                    <Route index element={<LoginForm> <MyTextInput
                         name="email"
                         type="email"
                         placeholder="email@g.c"
@@ -97,9 +97,9 @@ function App() {
                             <button type="submit">Submit</button>
                         </SignUpForm>}></Route>
                 </Route>
-                <Route path={"/"} element={<DashboardLayout/>}>
+                <Route path={"/dashboard"} element={<DashboardLayout/>}>
                     <Route index element={<Dashboard/>}></Route>
-                    <Route path={"/itemDetails/:id"} element={<ItemDetails/>}></Route>
+                    <Route path={"itemDetails/:id"} element={<ItemDetails/>}></Route>
                 </Route>
                 <Route path={"*"} element={<Error/>}></Route>
             </Routes>

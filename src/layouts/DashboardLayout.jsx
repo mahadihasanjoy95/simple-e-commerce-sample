@@ -4,7 +4,7 @@ import DashboardNavBar from "../components/navbar/DashboardNavBar";
 import client, {API_LIST} from "../ApiConfig";
 
 function DashboardLayout(props) {
-    const [welcome, setWelcome] = useState("<h1>Opps!</h1>");
+    const [welcome, setWelcome] = useState("<h1>DashBoard Layout</h1>");
     useEffect(() => {
         client.get(API_LIST.WELCOME).then((response) => {
             setWelcome(response.data);

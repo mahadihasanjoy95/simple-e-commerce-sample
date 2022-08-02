@@ -25,7 +25,7 @@ function LoginForm(props) {
                     client.post(API_LIST.SIGN_IN, values)
                         .then(response => {
                             localStorage.setItem("token", response.data.jwt);
-                            navigate("/")
+                            navigate("/dashboard")
                             }
                         )
                         .catch(error => {
