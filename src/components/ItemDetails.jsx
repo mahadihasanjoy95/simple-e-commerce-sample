@@ -6,7 +6,6 @@ import {ADD, REMOVE, REMOVE_ONE} from "../redux/actions/Actions";
 
 function ItemDetails(props) {
     const [data, setData] = useState([])
-    console.log(data)
     const {id} = useParams()
     const getdata = useSelector((state) => state.cartreducer.carts);
     const navigate = useNavigate()
@@ -41,12 +40,12 @@ function ItemDetails(props) {
                         {data.map((e) => {
                             return (<>
                                     <div className={"items_img"}>
-                                        <img src={e.imgdata}/>
+                                        <img src={e.image}/>
                                     </div>
                                     <div className={"details"}>
                                         <Table>
                                             <tr>
-                                                <td><><strong>Restaurant :</strong>{e.rname}</>
+                                                <td><><strong>Restaurant :</strong>{e.name}</>
                                                     <><strong>Price :</strong> ৳{e.price}</>
                                                     <><strong>Dishes :</strong> {e.address}</>
                                                     <><strong>Total :</strong> ৳{e.price*e.qnty}</>

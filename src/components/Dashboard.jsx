@@ -1,24 +1,35 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Cardsdata from "../Cardsdata";
 import {useDispatch} from "react-redux";
 import {ADD} from "../redux/actions/Actions";
+import client from "../ApiConfig";
+
 
 function Dashboard(props) {
-    const [cardData, setCardData] = useState(Cardsdata)
+    const [product,setProduct] = useState([])
+    console.log(product)
 
     const dispatch = useDispatch();
     const send = (e) => {
         dispatch(ADD(e));
     }
+    useEffect(() => {
+        let access_token = localStorage.getItem("token");
+        client.get('/product/getAll',{
+            headers: {
+                'Authorization': `token ${access_token}`
+            }}).then((response) => {
+                setProduct(response.data.result)
+        });
+    }, []);
     return (<div className={"container mt-3"}>
         <div className={"row d-flex justify-content-center align-items-center"}>
-            {cardData.map((element, id) => {
+            {product.map((element, id) => {
                 return (<Card key={id} style={{width: '22rem', border: "none"}} className="mx-2 mt-4 card_style">
-                    <Card.Img variant="top" src={element.imgdata} style={{height: "16rem"}} className={"mt-3"}/>
+                    <Card.Img variant="top" src={element.image} style={{height: "16rem"}} className={"mt-3"}/>
                     <Card.Body>
-                        <Card.Title>{element.rname}</Card.Title>
+                        <Card.Title>{element.name}</Card.Title>
                         <Card.Text>
                             Price: ৳{element.price}
                         </Card.Text>

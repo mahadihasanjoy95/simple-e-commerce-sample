@@ -16,6 +16,7 @@ function DashboardNavBar(props) {
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
         setAnchorEl(null);
     };
@@ -76,11 +77,11 @@ function DashboardNavBar(props) {
                                     return (
                                         <>
                                             <tr>
-                                                <td><NavLink to={`/itemDetails/${e.id}`}><img src={e.imgdata} style={{
+                                                <td><NavLink to={`/itemDetails/${e.id}`}><img src={e.image} style={{
                                                     width: "5rem",
                                                     height: "5rem"
                                                 }} onClick={handleClose}/></NavLink></td>
-                                                <td><p><strong>{e.rname}</strong></p>
+                                                <td><p><strong>{e.name}</strong></p>
                                                     <p><strong>Price: </strong>৳{e.price}</p>
                                                     <p><strong>Quantity: </strong>{e.qnty}</p>
                                                     <p style={{color: "red", cursor: "pointer", fontSize: 20}}>

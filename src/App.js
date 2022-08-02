@@ -50,11 +50,13 @@ function App() {
                         placeholder="email@g.c"
                     />
                         <br/>
+                        <br/>
                         <MyTextInput
                             name="password"
                             type="password"
                             placeholder="*****"
                         />
+                        <br/>
                         <br/>
                         <button type="submit">Login</button>
 
@@ -79,6 +81,13 @@ function App() {
                                 name="email"
                                 type="email"
                                 placeholder="email@g.c"
+                            />
+                            <br/>
+                            <br/>
+                            <MyTextInput
+                                name="password"
+                                type="password"
+                                placeholder="*****"
                             />
                             <br/>
                             <br/>

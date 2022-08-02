@@ -1,17 +1,23 @@
 import React from 'react';
-import {Form, Formik, useField} from "formik";
+import {Form, Formik} from "formik";
 import * as Yup from 'yup';
+import client, {API_LIST} from "../ApiConfig";
+import {toast} from "react-toastify";
+import ToastComponent from "./ToastComponent";
+
 function SignUpForm(props) {
 
     return (
         <>
+            <ToastComponent/>
             <Formik
                 initialValues={{
                     firstName: '',
                     lastName: '',
                     email: '',
+                    password: '',
                     acceptedTerms: false, // added for our checkbox
-                    jobType: '', // added for our select
+                    roles: 'user', // added for our select
                 }}
                 validationSchema={Yup.object({
                     firstName: Yup.string()
@@ -26,18 +32,20 @@ function SignUpForm(props) {
                     acceptedTerms: Yup.boolean()
                         .required('Required')
                         .oneOf([true], 'You must accept the terms and conditions.'),
-                    jobType: Yup.string()
-                        .oneOf(
-                            ['designer', 'development', 'product', 'other'],
-                            'Invalid Job Type'
-                        )
-                        .required('Required'),
+                    password: Yup.string()
+                        .required('No password provided.')
+                        .min(8, 'Password is too short - should be 8 chars minimum.')
+                        .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
                 })}
-                onSubmit={(values, { setSubmitting }) => {
-                    setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
-                    }, 400);
+                onSubmit={(values, {setSubmitting}) => {
+                    client.post(API_LIST.SIGN_UP, values)
+                        .then(response => {
+                            alert("User Signed Up Successfully!!")
+                            }
+                        )
+                        .catch(error => {
+                           alert("User Signed Up Failed")
+                        });
                 }}
             >
                 <Form>
