@@ -1,7 +1,7 @@
 import React from 'react';
 import AuthNavBar from "../components/navbar/AuthNavBar";
 import {Outlet} from "react-router-dom";
-import ToastComponent from "../components/ToastComponent";
+
 function AuthLayout(props) {
     return (
         <div>

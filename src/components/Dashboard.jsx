@@ -3,26 +3,31 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {useDispatch} from "react-redux";
 import {ADD} from "../redux/actions/Actions";
-import client from "../ApiConfig";
+import client, {API_LIST} from "../ApiConfig";
 
 
 function Dashboard(props) {
+
+    //This product list hold all the product after fetching from backend
     const [product,setProduct] = useState([])
-    console.log(product)
 
     const dispatch = useDispatch();
+    //Send product method add every product into redux store
     const send = (e) => {
         dispatch(ADD(e));
     }
+
     useEffect(() => {
         let access_token = localStorage.getItem("token");
-        client.get('/product/getAll',{
+        console.log(access_token)
+        client.get(API_LIST.GET_PRODUCTS,{
             headers: {
                 'Authorization': `token ${access_token}`
             }}).then((response) => {
                 setProduct(response.data.result)
         });
     }, []);
+
     return (<div className={"container mt-3"}>
         <div className={"row d-flex justify-content-center align-items-center"}>
             {product.map((element, id) => {

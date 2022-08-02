@@ -1,11 +1,14 @@
 import axios from "axios";
 
-export const API_LIST =
-   {
-        SIGN_UP:"/user/signUp",
-        SIGN_IN: "/user/signIn",
-        WELCOME: "/"
-    }
+export const API_LIST = {
+    WELCOME: "/",
+
+    //USER
+    SIGN_UP: "/user/signUp", SIGN_IN: "/user/signIn",
+
+    //Products
+    GET_PRODUCTS: "/product/getAll", CREATE_PRODUCTS: "/product/create"
+}
 
 
 const client = axios.create({

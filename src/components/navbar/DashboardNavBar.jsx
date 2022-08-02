@@ -11,22 +11,25 @@ import {REMOVE} from "../../redux/actions/Actions";
 function DashboardNavBar(props) {
     const navigate = useNavigate()
     const [totalPrice, setTotalPrice] = useState(0)
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
 
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
     const getData = useSelector((state) => state.cartreducer.carts);
 
     const dispatch = useDispatch();
+
+    /**
+     * Remove particular product from cart and from Redux store
+     * @param e
+     */
     const remove = (e) => {
         dispatch(REMOVE(e));
-        navigate("/")
+        //TODO: remove the navigation section and handle this navigate with product on item details page
+        navigate("/dashboard")
     }
+
+    /**
+     * This method will calculate the total price of all product and give
+     * summation to the Total in cart menu
+     */
     const calculateTotalPrice =()=>{
         let price = 0;
         getData.map((e,k)=>{
@@ -36,9 +39,21 @@ function DashboardNavBar(props) {
         console.log(totalPrice)
         setTotalPrice(price)
     }
+
     useEffect(() => {
        calculateTotalPrice()
     }, [calculateTotalPrice]);
+
+    //These states are for handling the carts menu
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     return (
         <Navbar bg="dark" variant="dark" style={{height: "60px", padding: "5px 20px"}}>
@@ -94,9 +109,6 @@ function DashboardNavBar(props) {
                                                     <i className={"fas fa-trash largetrash"}
                                                        onClick={() => remove(e.id)}></i>
                                                 </td>
-                                                {/*<div className='mt-5 d-flex justify-content-between align-items-center' style={{width:100,cursor:"pointer",background:"#ddd",color:"#111"}}>*/}
-                                                {/*    <span style={{fontSize:24}}>-</span>*/}
-                                                {/*</div>*/}
                                             </tr>
                                         </>
                                     )

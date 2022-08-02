@@ -11,10 +11,10 @@ function DashboardLayout(props) {
         });
     }, []);
     return (<div>
-            <DashboardNavBar/>
-            <h1 className={"text-center"}>{welcome}</h1>
-            <Outlet/>
-        </div>);
+        <DashboardNavBar/>
+        <h1 className={"text-center"}>{welcome}</h1>
+        <Outlet/>
+    </div>);
 }
 
 export default DashboardLayout;

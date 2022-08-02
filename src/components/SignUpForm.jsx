@@ -16,8 +16,8 @@ function SignUpForm(props) {
                     lastName: '',
                     email: '',
                     password: '',
-                    acceptedTerms: false, // added for our checkbox
-                    roles: 'user', // added for our select
+                    acceptedTerms: false, // added for checkbox
+                    roles: 'user',
                 }}
                 validationSchema={Yup.object({
                     firstName: Yup.string()
