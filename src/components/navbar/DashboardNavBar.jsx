@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import Table from "react-bootstrap/Table";
 import {NavLink, useNavigate} from "react-router-dom";
 import {REMOVE} from "../../redux/actions/Actions";
+import Button from "react-bootstrap/Button";
 
 function DashboardNavBar(props) {
     const navigate = useNavigate()
@@ -61,6 +62,7 @@ function DashboardNavBar(props) {
                 <NavLink to="/dashboard" className="text-decoration-none text-light mx-3">Home</NavLink>
                 <NavLink to="/" className="text-decoration-none text-light mx-3">Login</NavLink>
             </Nav>
+            <Button bsStyle="primary">LOGOUT</Button>
             <Badge badgeContent={getData.length} color="primary" id="basic-button"
                    aria-controls={open ? 'basic-menu' : undefined}
                    aria-haspopup="true"

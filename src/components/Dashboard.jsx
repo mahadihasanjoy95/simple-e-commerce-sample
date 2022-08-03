@@ -22,7 +22,7 @@ function Dashboard(props) {
         console.log(access_token)
         client.get(API_LIST.GET_PRODUCTS,{
             headers: {
-                'Authorization': `token ${access_token}`
+                'Authorization': `Bearer ${access_token}`
             }}).then((response) => {
                 setProduct(response.data.result)
         });
