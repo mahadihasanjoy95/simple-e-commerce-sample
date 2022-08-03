@@ -62,7 +62,7 @@ function DashboardNavBar(props) {
                 <NavLink to="/dashboard" className="text-decoration-none text-light mx-3">Home</NavLink>
                 <NavLink to="/" className="text-decoration-none text-light mx-3">Login</NavLink>
             </Nav>
-            <Button bsStyle="primary">LOGOUT</Button>
+            {/*<Button bsStyle="primary">LOGOUT</Button>*/}
             <Badge badgeContent={getData.length} color="primary" id="basic-button"
                    aria-controls={open ? 'basic-menu' : undefined}
                    aria-haspopup="true"

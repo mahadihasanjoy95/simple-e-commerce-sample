@@ -3,7 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {useDispatch} from "react-redux";
 import {ADD} from "../redux/actions/Actions";
-import client, {API_LIST} from "../ApiConfig";
+import  {client2,API_LIST} from "../ApiConfig";
+import {useNavigate} from "react-router-dom";
 
 
 function Dashboard(props) {
@@ -20,21 +21,22 @@ function Dashboard(props) {
     useEffect(() => {
         let access_token = localStorage.getItem("token");
         console.log(access_token)
-        client.get(API_LIST.GET_PRODUCTS,{
+        client2.get(API_LIST.FAKE_PRODUCTS,{
             headers: {
-                'Authorization': `Bearer ${access_token}`
+                // 'Authorization': `Bearer ${access_token}`
             }}).then((response) => {
-                setProduct(response.data.result)
+                setProduct(response.data)
         });
     }, []);
+    const navigate = useNavigate()
 
     return (<div className={"container mt-3"}>
         <div className={"row d-flex justify-content-center align-items-center"}>
             {product.map((element, id) => {
                 return (<Card key={id} style={{width: '22rem', border: "none"}} className="mx-2 mt-4 card_style">
-                    <Card.Img variant="top" src={element.image} style={{height: "16rem"}} className={"mt-3"}/>
+                    <Card.Img onClick={()=>navigate(`/dashboard/productDetails/${element.id}`)} variant="top" src={element.image} style={{height: "16rem",cursor:"pointer"}} className={"mt-3"}/>
                     <Card.Body>
-                        <Card.Title>{element.name}</Card.Title>
+                        <Card.Title>{element.title}</Card.Title>
                         <Card.Text>
                             Price: ৳{element.price}
                         </Card.Text>
