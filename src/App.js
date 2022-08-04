@@ -6,9 +6,9 @@ import LoginForm from "./components/LoginForm";
 import React from "react";
 import Error from "./Error";
 import DashboardLayout from "./layouts/DashboardLayout";
-import Dashboard from "./components/Dashboard";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useField} from "formik";
+import PrivateRoute from "./PrivateRoute";
+import Dashboard from "./components/Dashboard";
 import ItemDetails from "./components/ItemDetails";
 import ProductDetails from "./components/ProductDetails";
 import CheckOut from "./components/CheckOut";
@@ -19,15 +19,13 @@ function App() {
     return (<div className={"App"}>
         <Routes>
             <Route path={"/"} element={<AuthLayout/>}>
-                <Route index element={<LoginForm/>  }></Route>
+                <Route index element={<LoginForm/>}></Route>
                 <Route path={"signUp"} element={<SignUpForm/>}></Route>
             </Route>
-            <Route path={"/dashboard"} element={<DashboardLayout/>}>
-                <Route index element={<Dashboard/>}></Route>
-                <Route path={"itemDetails/:id"} element={<ItemDetails/>}></Route>
-                <Route path={"productDetails/:id"} element={<ProductDetails/>}></Route>
-                <Route path={"checkout"} element={<CheckOut/>}></Route>
-            </Route>
+            <Route path="/dashboard" element={<PrivateRoute><DashboardLayout><Dashboard/></DashboardLayout></PrivateRoute>}></Route>
+            <Route path="/dashboard/itemDetails/:id" element={<PrivateRoute><DashboardLayout><ItemDetails/></DashboardLayout></PrivateRoute>}></Route>
+            <Route path="/dashboard/productDetails/:id" element={<PrivateRoute><DashboardLayout><ProductDetails/></DashboardLayout></PrivateRoute>}></Route>
+            <Route path="/dashboard/checkout" element={<PrivateRoute><DashboardLayout><CheckOut/></DashboardLayout></PrivateRoute>}></Route>
             <Route path={"*"} element={<Error/>}></Route>
         </Routes>
     </div>);

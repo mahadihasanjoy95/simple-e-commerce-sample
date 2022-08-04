@@ -6,7 +6,8 @@ function DashboardLayout(props) {
 
     return (<div>
         <DashboardNavBar/>
-        <Outlet/>
+        {/*<Outlet/>*/}
+        {props.children}
     </div>);
 }
 

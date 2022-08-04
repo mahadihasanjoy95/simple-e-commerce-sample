@@ -17,7 +17,7 @@ function DashboardNavBar(props) {
 
     const dispatch = useDispatch();
     const [logout,setLogout] = useState(false);
-    console.log(logout)
+
     const handleLogout=()=>{
         localStorage.setItem("token","")
         setLogout(true)
@@ -26,7 +26,7 @@ function DashboardNavBar(props) {
     useEffect(()=>{
         if (localStorage.getItem("token") === null || localStorage.getItem("token").length===0) {
             setLogout(true)
-            navigate("/")
+            // navigate("/")
         }
         else{
             setLogout(false)
