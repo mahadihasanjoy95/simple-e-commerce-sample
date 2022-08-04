@@ -11,7 +11,7 @@ import Button from "react-bootstrap/Button";
 
 function DashboardNavBar(props) {
     const navigate = useNavigate()
-    const [totalPrice, setTotalPrice] = useState(0)
+
 
     const getData = useSelector((state) => state.cartreducer.carts);
 
@@ -27,23 +27,6 @@ function DashboardNavBar(props) {
         navigate("/dashboard")
     }
 
-    /**
-     * This method will calculate the total price of all product and give
-     * summation to the Total in cart menu
-     */
-    const calculateTotalPrice =()=>{
-        let price = 0;
-        getData.map((e,k)=>{
-            price = price + (e.price*e.qnty)
-            console.log(price)
-        })
-        console.log(totalPrice)
-        setTotalPrice(price)
-    }
-
-    useEffect(() => {
-       calculateTotalPrice()
-    }, [calculateTotalPrice]);
 
     //These states are for handling the carts menu
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -53,6 +36,10 @@ function DashboardNavBar(props) {
     };
 
     const handleClose = () => {
+        setAnchorEl(null);
+    };
+    const handleCheckout = () => {
+        navigate("/dashboard/checkout")
         setAnchorEl(null);
     };
 
@@ -116,7 +103,8 @@ function DashboardNavBar(props) {
                                     )
                                 })
                             }
-                            <p className={"text-center"}><strong>Total :</strong>৳{totalPrice} </p>
+                            {/*<p className={"text-center"}><strong>Total :</strong>৳{totalPrice} </p>*/}
+                            <button onClick={()=>handleCheckout()}>Checkout</button>
                             </tbody>
                         </Table>
                     </div> :

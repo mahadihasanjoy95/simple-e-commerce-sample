@@ -394,8 +394,23 @@ input[type="button"]:focus-visible {
     border-radius: 5px;
 }
 
+.items_img_1 {
+    flex: .2;
+    justifyContent:'left';
+    display: flex;
+}
+
+.items_img_1 img {
+    width: 6rem;
+    border-radius: 1px;
+}
 .details {
     flex: .5;
+}
+.details_1 {
+    flex: .5;
+    justifyContent:'left';
+    display: flex;
 }
 
 .rating {

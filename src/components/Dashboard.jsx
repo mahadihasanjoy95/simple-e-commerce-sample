@@ -34,7 +34,7 @@ function Dashboard(props) {
         <div className={"row d-flex justify-content-center align-items-center"}>
             {product.map((element, id) => {
                 return (<Card key={id} style={{width: '22rem', border: "none"}} className="mx-2 mt-4 card_style">
-                    <Card.Img onClick={()=>navigate(`/dashboard/productDetails/${element.id}`)} variant="top" src={element.image} style={{height: "16rem",cursor:"pointer"}} className={"mt-3"}/>
+                    <Card.Img onClick={()=>navigate(`/dashboard/productDetails/${element.id}`)} variant="top" src={element.image} style={{height: "15rem",cursor:"pointer"}} className={"mt-3"}/>
                     <Card.Body>
                         <Card.Title>{element.title}</Card.Title>
                         <Card.Text>

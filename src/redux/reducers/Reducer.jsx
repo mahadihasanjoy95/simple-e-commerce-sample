@@ -24,6 +24,11 @@ export const cartreducer = (state = INIT_STATE, action) => {
             return {
                 ...state, carts: data
             }
+        case "REMOVE_PRODUCT":
+            const d = state.carts.filter((e) => e.id != action.payload.id)
+            return {
+                ...state, carts: d
+            }
         case "REMOVE_ONE_CART":
             const itemIndex_dec = state.carts.findIndex((i) => i.id === action.payload.id)
 

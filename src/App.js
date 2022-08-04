@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {useField} from "formik";
 import ItemDetails from "./components/ItemDetails";
 import ProductDetails from "./components/ProductDetails";
+import CheckOut from "./components/CheckOut";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                 <Route index element={<Dashboard/>}></Route>
                 <Route path={"itemDetails/:id"} element={<ItemDetails/>}></Route>
                 <Route path={"productDetails/:id"} element={<ProductDetails/>}></Route>
+                <Route path={"checkout"} element={<CheckOut/>}></Route>
             </Route>
             <Route path={"*"} element={<Error/>}></Route>
         </Routes>

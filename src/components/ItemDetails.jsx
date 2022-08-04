@@ -53,7 +53,7 @@ function ItemDetails(props) {
 
     return (<>
         <div className={"container mt-2"}>
-            <h2>Item Details</h2>
+            <h2>Cart Details</h2>
             <section className={"container mt-3"}>
                 <div className="iteamsdetails">
                     {data.map((e) => {
@@ -70,28 +70,28 @@ function ItemDetails(props) {
                                             <br/>
                                             <><strong>Dishes :</strong> {e.description}</>
                                             <br/>
-                                            <><strong>Total :</strong> ৳{e.price}</>
-                                            {/*<div className='mt-5 d-flex justify-content-between align-items-center'*/}
-                                            {/*     style={{*/}
-                                            {/*         width: 100,*/}
-                                            {/*         cursor: "pointer",*/}
-                                            {/*         background: "#ddd",*/}
-                                            {/*         color: "#111"*/}
-                                            {/*     }}>*/}
-                                            {/*    <span style={{fontSize: 24}}*/}
-                                            {/*          onClick={e.qnty <= 1 ? () => remove(e.id) : () => removeOne(e)}>-</span>*/}
-                                            {/*    <span style={{fontSize: 22}}>{e.qnty}</span>*/}
-                                            {/*    <span style={{fontSize: 24}} onClick={() => send(e)}>+</span>*/}
+                                            <><strong>Total :</strong> ৳{e.price*e.qnty}</>
+                                            <div className='mt-5 d-flex justify-content-between align-items-center'
+                                                 style={{
+                                                     width: 100,
+                                                     cursor: "pointer",
+                                                     background: "#ddd",
+                                                     color: "#111"
+                                                 }}>
+                                                <span style={{fontSize: 24}}
+                                                      onClick={e.qnty <= 1 ? () => remove(e.id) : () => removeOne(e)}>-</span>
+                                                <span style={{fontSize: 22}}>{e.qnty}</span>
+                                                <span style={{fontSize: 24}} onClick={() => send(e)}>+</span>
 
-                                            {/*</div>*/}
+                                            </div>
                                         </td>
                                         <td>
-                                            {/*<p><strong>Rating :</strong><span style={{*/}
-                                            {/*    background: "green",*/}
-                                            {/*    color: "#fff",*/}
-                                            {/*    padding: "2px 5px",*/}
-                                            {/*    borderRadius: "5px"*/}
-                                            {/*}}> {e.rating} ★</span></p>*/}
+                                            <p><strong>Rating :</strong><span style={{
+                                                background: "green",
+                                                color: "#fff",
+                                                padding: "2px 5px",
+                                                borderRadius: "5px"
+                                            }}> {e.rating.rate} ★</span></p>
 
                                             <p><strong>Order Review :</strong><span>{e.description}</span></p>
 
