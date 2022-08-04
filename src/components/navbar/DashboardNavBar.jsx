@@ -16,7 +16,22 @@ function DashboardNavBar(props) {
     const getData = useSelector((state) => state.cartreducer.carts);
 
     const dispatch = useDispatch();
-
+    const [logout,setLogout] = useState(false);
+    console.log(logout)
+    const handleLogout=()=>{
+        localStorage.setItem("token","")
+        setLogout(true)
+        navigate("/")
+    }
+    useEffect(()=>{
+        if (localStorage.getItem("token") === null || localStorage.getItem("token").length===0) {
+            setLogout(true)
+            navigate("/")
+        }
+        else{
+            setLogout(false)
+        }
+    })
     /**
      * Remove particular product from cart and from Redux store
      * @param e
@@ -49,7 +64,8 @@ function DashboardNavBar(props) {
                 <NavLink to="/dashboard" className="text-decoration-none text-light mx-3">Home</NavLink>
                 <NavLink to="/" className="text-decoration-none text-light mx-3">Login</NavLink>
             </Nav>
-            {/*<Button bsStyle="primary">LOGOUT</Button>*/}
+            {logout?<></>:<i onClick={()=>handleLogout()} className="fa-solid fa fa-sign-out text-light" style={{fontSize: 30, cursor: "pointer",padding:20}}></i>
+            }
             <Badge badgeContent={getData.length} color="primary" id="basic-button"
                    aria-controls={open ? 'basic-menu' : undefined}
                    aria-haspopup="true"

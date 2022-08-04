@@ -4,9 +4,10 @@ import * as Yup from 'yup';
 import client, {API_LIST} from "../ApiConfig";
 import MyTextInput from "./MyTextInput";
 import MyCheckbox from "./MyCheckbox";
+import {useNavigate} from "react-router-dom";
 
 function SignUpForm(props) {
-
+    const navigate = useNavigate()
     return (<>
         <Formik
             initialValues={{
@@ -31,6 +32,7 @@ function SignUpForm(props) {
                 client.post(API_LIST.SIGN_UP, values)
                     .then(response => {
                         alert("User Signed Up Successfully!!")
+                        navigate("/")
                     })
                     .catch(error => {
                         alert("User Signed Up Failed")
