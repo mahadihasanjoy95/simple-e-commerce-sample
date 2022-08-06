@@ -60,7 +60,7 @@ function DashboardNavBar(props) {
                 <NavLink to="/dashboard" className="text-decoration-none text-light mx-3">Home</NavLink>
                 <NavLink to="/" className="text-decoration-none text-light mx-3">Login</NavLink>
             </Nav>
-            {logout ? <></> : <i onClick={() => handleLogout()} className="fa-solid fa fa-sign-out text-light"
+            {logout ? <></> : <i title={"Logout"} onClick={() => handleLogout()} className="fa-solid fa fa-sign-out text-light"
                                  style={{fontSize: 30, cursor: "pointer", padding: 20}}></i>
             }
             <Badge badgeContent={getData.length} color="primary" id="basic-button"
@@ -68,7 +68,7 @@ function DashboardNavBar(props) {
                    aria-haspopup="true"
                    aria-expanded={open ? 'true' : undefined}
                    onClick={handleClick}>
-                <i className="fa-solid fa-cart-shopping text-light" style={{fontSize: 25, cursor: "pointer"}}></i>
+                <i title={"Cart"} className="fa-solid fa-cart-shopping text-light" style={{fontSize: 25, cursor: "pointer"}}></i>
             </Badge>
             <Menu
                 id="basic-menu"

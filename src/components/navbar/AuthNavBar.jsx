@@ -28,7 +28,7 @@ function AuthNavBar(props) {
                 <NavLink to="/signUp" className="text-decoration-none text-light mx-3">SignUp </NavLink>
                 <NavLink to="/" className="text-decoration-none text-light mx-3">LogIn</NavLink>
             </Nav>
-            {logout ? <></> : <i onClick={() => handleLogout()} className="fa-solid fa fa-sign-out text-light"
+            {logout ? <></> : <i title={"Logout"} onClick={() => handleLogout()} className="fa-solid fa fa-sign-out text-light"
                                  style={{fontSize: 30, cursor: "pointer", padding: 20}}></i>
             }
         </Navbar>
