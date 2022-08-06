@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Nav, Navbar} from "react-bootstrap";
 import {Badge} from "@mui/material";
 
@@ -6,28 +6,26 @@ import Menu from '@mui/material/Menu';
 import {useDispatch, useSelector} from "react-redux";
 import Table from "react-bootstrap/Table";
 import {NavLink, useNavigate} from "react-router-dom";
-import {REMOVE} from "../../redux/actions/Actions";
+import {LOGIN, LOGOUT, REMOVE} from "../../redux/actions/Actions";
 
 function DashboardNavBar(props) {
     const navigate = useNavigate()
-
-
     const getData = useSelector((state) => state.cartreducer.carts);
-
+    let logout = useSelector((state) => state.authReducer.logout);
     const dispatch = useDispatch();
-    const [logout, setLogout] = useState(false);
+    // const [logout, setLogout] = useState(false);
 
     const handleLogout = () => {
         localStorage.setItem("token", "")
-        setLogout(true)
+        dispatch(LOGOUT())
         navigate("/")
     }
     useEffect(() => {
         if (localStorage.getItem("token") === null || localStorage.getItem("token").length === 0) {
-            setLogout(true)
+            dispatch(LOGOUT())
             // navigate("/")
         } else {
-            setLogout(false)
+            dispatch(LOGIN())
         }
     })
     /**

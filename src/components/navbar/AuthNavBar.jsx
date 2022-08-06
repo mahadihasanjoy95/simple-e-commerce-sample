@@ -1,21 +1,24 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import {Nav, Navbar} from "react-bootstrap";
 import {NavLink, useNavigate} from "react-router-dom"
+import {useDispatch, useSelector} from "react-redux";
+import {LOGIN, LOGOUT} from "../../redux/actions/Actions";
 
 
 function AuthNavBar(props) {
     const navigate = useNavigate()
-    const [logout, setLogout] = useState(false);
+    const dispatch = useDispatch();
+    let logout = useSelector((state) => state.authReducer.logout);
     const handleLogout = () => {
         localStorage.setItem("token", "")
-        setLogout(true)
+        dispatch(LOGOUT())
         navigate("/")
     }
     useEffect(() => {
         if (localStorage.getItem("token") === null || localStorage.getItem("token").length === 0) {
-            setLogout(true)
+            dispatch(LOGOUT())
         } else {
-            setLogout(false)
+            dispatch(LOGIN())
         }
     })
     return (<div>

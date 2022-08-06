@@ -18,3 +18,14 @@ export const REMOVE_ONE = (item) => {
         type: "REMOVE_ONE_CART", payload: item
     }
 }
+export const LOGOUT = () => {
+    return {
+        type: "LOGOUT"
+    }
+}
+
+export const LOGIN = () => {
+    return {
+        type: "LOGIN"
+    }
+}
