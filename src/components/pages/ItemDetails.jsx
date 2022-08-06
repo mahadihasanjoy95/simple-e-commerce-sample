@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Table from 'react-bootstrap/Table'
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {ADD, REMOVE, REMOVE_ONE} from "../redux/actions/Actions";
+import {ADD, REMOVE, REMOVE_ONE} from "../../redux/actions/Actions";
 
 function ItemDetails(props) {
 

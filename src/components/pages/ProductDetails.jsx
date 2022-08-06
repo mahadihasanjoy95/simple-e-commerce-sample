@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import Table from "react-bootstrap/Table";
 import {useEffect} from "react";
-import {API_LIST, client2} from "../ApiConfig";
+import {API_LIST, client2} from "../../ApiConfig";
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {ADD, REMOVE, REMOVE_ONE, REMOVE_PRODUCT} from "../redux/actions/Actions";
+import {ADD, REMOVE, REMOVE_ONE, REMOVE_PRODUCT} from "../../redux/actions/Actions";
 
 function ProductDetails(props) {
     const [data,setData] = useState({rating:{rate:0}})

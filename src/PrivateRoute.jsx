@@ -1,17 +1,20 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {LOGIN, LOGOUT} from "./redux/actions/Actions";
 
 
 function PrivateRoute(children) {
     const navigate = useNavigate()
-    const [logout,setLogout] = useState(false);
+    const dispatch = useDispatch();
+    let logout = useSelector((state) => state.authReducer.logout);
     useEffect(()=>{
         if (localStorage.getItem("token") === null || localStorage.getItem("token").length===0) {
-            setLogout(true)
+            dispatch(LOGOUT())
         }
         else{
-            setLogout(false)
+            dispatch(LOGIN())
         }
     })
     return logout ? navigate("/") : children.children ;

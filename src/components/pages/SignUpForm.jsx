@@ -1,12 +1,12 @@
 import React from 'react';
 import {Form, Formik} from "formik";
 import * as Yup from 'yup';
-import client, {API_LIST} from "../ApiConfig";
-import MyTextInput from "./MyTextInput";
-import MyCheckbox from "./MyCheckbox";
+import client, {API_LIST} from "../../ApiConfig";
+import MyTextInput from "../MyTextInput";
+import MyCheckbox from "../MyCheckbox";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "../LoadingSpinner";
 
 function SignUpForm(props) {
     const [isLoading, setIsLoading] = useState(false);

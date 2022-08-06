@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {Form, Formik} from "formik";
 import * as Yup from 'yup';
-import client, {API_LIST} from "../ApiConfig";
+import client, {API_LIST} from "../../ApiConfig";
 import {useNavigate} from "react-router-dom";
-import MyTextInput from "./MyTextInput";
-import LoadingSpinner from "./LoadingSpinner";
+import MyTextInput from "../MyTextInput";
+import LoadingSpinner from "../LoadingSpinner";
 
 function LoginForm(props) {
     const navigate = useNavigate()

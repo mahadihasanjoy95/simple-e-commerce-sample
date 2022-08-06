@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {useDispatch} from "react-redux";
-import {ADD} from "../redux/actions/Actions";
-import  {client2,API_LIST} from "../ApiConfig";
+import {ADD} from "../../redux/actions/Actions";
+import  {client2,API_LIST} from "../../ApiConfig";
 import {useNavigate} from "react-router-dom";
 
 
