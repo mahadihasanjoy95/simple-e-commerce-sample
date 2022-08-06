@@ -7,7 +7,6 @@ import {useDispatch, useSelector} from "react-redux";
 import Table from "react-bootstrap/Table";
 import {NavLink, useNavigate} from "react-router-dom";
 import {REMOVE} from "../../redux/actions/Actions";
-import Button from "react-bootstrap/Button";
 
 function DashboardNavBar(props) {
     const navigate = useNavigate()
@@ -16,19 +15,18 @@ function DashboardNavBar(props) {
     const getData = useSelector((state) => state.cartreducer.carts);
 
     const dispatch = useDispatch();
-    const [logout,setLogout] = useState(false);
+    const [logout, setLogout] = useState(false);
 
-    const handleLogout=()=>{
-        localStorage.setItem("token","")
+    const handleLogout = () => {
+        localStorage.setItem("token", "")
         setLogout(true)
         navigate("/")
     }
-    useEffect(()=>{
-        if (localStorage.getItem("token") === null || localStorage.getItem("token").length===0) {
+    useEffect(() => {
+        if (localStorage.getItem("token") === null || localStorage.getItem("token").length === 0) {
             setLogout(true)
             // navigate("/")
-        }
-        else{
+        } else {
             setLogout(false)
         }
     })
@@ -64,7 +62,8 @@ function DashboardNavBar(props) {
                 <NavLink to="/dashboard" className="text-decoration-none text-light mx-3">Home</NavLink>
                 <NavLink to="/" className="text-decoration-none text-light mx-3">Login</NavLink>
             </Nav>
-            {logout?<></>:<i onClick={()=>handleLogout()} className="fa-solid fa fa-sign-out text-light" style={{fontSize: 30, cursor: "pointer",padding:20}}></i>
+            {logout ? <></> : <i onClick={() => handleLogout()} className="fa-solid fa fa-sign-out text-light"
+                                 style={{fontSize: 30, cursor: "pointer", padding: 20}}></i>
             }
             <Badge badgeContent={getData.length} color="primary" id="basic-button"
                    aria-controls={open ? 'basic-menu' : undefined}
@@ -97,10 +96,13 @@ function DashboardNavBar(props) {
                                     return (
                                         <>
                                             <tr>
-                                                <td><NavLink to={`/dashboard/itemDetails/${e.id}`}><img src={e.image} style={{
-                                                    width: "5rem",
-                                                    height: "5rem"
-                                                }} onClick={handleClose}/></NavLink></td>
+                                                <td><NavLink to={`/dashboard/itemDetails/${e.id}`}><img src={e.image}
+                                                                                                        style={{
+                                                                                                            width: "5rem",
+                                                                                                            height: "5rem"
+                                                                                                        }}
+                                                                                                        onClick={handleClose}/></NavLink>
+                                                </td>
                                                 <td><p><strong>{e.name}</strong></p>
                                                     <p><strong>Price: </strong>৳{e.price}</p>
                                                     <p><strong>Quantity: </strong>{e.qnty}</p>
@@ -120,7 +122,7 @@ function DashboardNavBar(props) {
                                 })
                             }
                             {/*<p className={"text-center"}><strong>Total :</strong>৳{totalPrice} </p>*/}
-                            <button onClick={()=>handleCheckout()}>Checkout</button>
+                            <button onClick={() => handleCheckout()}>Checkout</button>
                             </tbody>
                         </Table>
                     </div> :

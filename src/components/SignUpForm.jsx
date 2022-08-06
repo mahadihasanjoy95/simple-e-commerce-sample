@@ -5,11 +5,14 @@ import client, {API_LIST} from "../ApiConfig";
 import MyTextInput from "./MyTextInput";
 import MyCheckbox from "./MyCheckbox";
 import {useNavigate} from "react-router-dom";
+import {useState} from "react";
+import LoadingSpinner from "./LoadingSpinner";
 
 function SignUpForm(props) {
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate()
     return (<>
-        <Formik
+        {isLoading?<LoadingSpinner/>:<Formik
             initialValues={{
                 firstName: '', lastName: '', email: '', password: '', acceptedTerms: false, // added for checkbox
                 roles: 'user',
@@ -29,12 +32,15 @@ function SignUpForm(props) {
                     .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
             })}
             onSubmit={(values, {setSubmitting}) => {
+                setIsLoading(true)
                 client.post(API_LIST.SIGN_UP, values)
                     .then(response => {
+                        setIsLoading(false)
                         alert("User Signed Up Successfully!!")
                         navigate("/")
                     })
                     .catch(error => {
+                        setIsLoading(false)
                         alert("User Signed Up Failed")
                     });
             }}
@@ -73,7 +79,7 @@ function SignUpForm(props) {
                 </MyCheckbox>
                 <button type="submit">Submit</button>
             </Form>
-        </Formik>
+        </Formik>}
     </>);
 }
 
