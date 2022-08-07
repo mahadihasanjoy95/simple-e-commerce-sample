@@ -5,7 +5,9 @@ import {useDispatch} from "react-redux";
 import {ADD} from "../../redux/actions/Actions";
 import  {client2,API_LIST} from "../../ApiConfig";
 import {useNavigate} from "react-router-dom";
-
+import CustomToastContainer from "../CustomToastContainer";
+import 'react-toastify/dist/ReactToastify.css';
+import {toast} from "react-toastify";
 
 function Dashboard(props) {
 
@@ -15,6 +17,15 @@ function Dashboard(props) {
     const dispatch = useDispatch();
     //Send product method add every product into redux store
     const send = (e) => {
+        toast.success('Item Added to Cart!', {
+            position: "bottom-left",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
         dispatch(ADD(e));
     }
 
@@ -49,6 +60,7 @@ function Dashboard(props) {
                 </Card>)
             })}
         </div>
+        <CustomToastContainer/>
     </div>);
 }
 

@@ -7,6 +7,9 @@ import MyCheckbox from "../MyCheckbox";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import LoadingSpinner from "../LoadingSpinner";
+import CustomToastContainer from "../CustomToastContainer";
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignUpForm(props) {
     const [isLoading, setIsLoading] = useState(false);
@@ -35,13 +38,30 @@ function SignUpForm(props) {
                 setIsLoading(true)
                 client.post(API_LIST.SIGN_UP, values)
                     .then(response => {
+                        toast.success('User Signup Successfully!', {
+                            position: "bottom-left",
+                            autoClose: 2000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                        });
                         setIsLoading(false)
-                        alert("User Signed Up Successfully!!")
+
                         navigate("/")
                     })
                     .catch(error => {
                         setIsLoading(false)
-                        alert("User Signed Up Failed")
+                        toast.error('Signup Failed!!', {
+                            position: "bottom-left",
+                            autoClose: 2000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                        });
                     });
             }}
         >
@@ -80,6 +100,7 @@ function SignUpForm(props) {
                 <button type="submit">Submit</button>
             </Form>
         </Formik>}
+        <CustomToastContainer/>
     </>);
 }
 

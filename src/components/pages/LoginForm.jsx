@@ -5,6 +5,9 @@ import client, {API_LIST} from "../../ApiConfig";
 import {useNavigate} from "react-router-dom";
 import MyTextInput from "../MyTextInput";
 import LoadingSpinner from "../LoadingSpinner";
+import CustomToastContainer from "../CustomToastContainer";
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function LoginForm(props) {
     const navigate = useNavigate()
@@ -34,7 +37,15 @@ function LoginForm(props) {
                     })
                     .catch(error => {
                         setIsLoading(false)
-                        alert("User Logged In Failed")
+                        toast.error('Login Failed!!', {
+                            position: "bottom-left",
+                            autoClose: 2000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                        });
                     });
             }}
         >
@@ -56,6 +67,7 @@ function LoginForm(props) {
                 <button type="submit">Login</button>
             </Form>
         </Formik>}
+        <CustomToastContainer/>
     </>);
 }
 
